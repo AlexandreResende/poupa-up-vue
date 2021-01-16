@@ -1,5 +1,7 @@
 # poupa-up-vue
 
+### This is the vue.js version for the poupa up project
+
 ## Project setup
 ```
 npm install
@@ -7,7 +9,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production
@@ -19,6 +21,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
