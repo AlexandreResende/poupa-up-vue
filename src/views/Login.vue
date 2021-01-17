@@ -7,7 +7,7 @@
       <label>Password</label>
       <input type='password' name='password' id='password'><br>
       <input type='button' id='buttons' value='Submit' name='submit'>
-      <input type='button' id='buttons' value='Sign up' name='sign up'><br><br>
+      <router-link to='/signup'><input type='button' id='buttons' value='Sign up' name='sign up'></router-link><br><br>
       <a href='#'>Forgot my password!</a>
     </div>
     <div id='right-container'>
