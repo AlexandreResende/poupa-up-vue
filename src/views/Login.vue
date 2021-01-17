@@ -3,10 +3,10 @@
     <div id='left-container'>
       <h1 id='header'>{{ title }}</h1>
       <label>Username</label>
-      <input type='text' name='username' id='username' placeholder='Type your username here'><br><br>
+      <input type='text' name='username' id='username' placeholder='Type your username here' v-model='username'><br><br>
       <label>Password</label>
-      <input type='password' name='password' id='password'><br>
-      <input type='button' id='buttons' value='Submit' name='submit'>
+      <input type='password' name='password' id='password' v-model='password'><br>
+      <input type='button' id='buttons' value='Sign in' name='submit' v-on:click='this.signIn'>
       <router-link to='/signup'><input type='button' id='buttons' value='Sign up' name='sign up'></router-link><br><br>
       <a href='#'>Forgot my password!</a>
     </div>
@@ -17,11 +17,21 @@
 </template>
 
 <script>
+import PoupaUpService from '../services/poupa-up-service';
+
 export default {
   name: 'Login',
   data() {
     return {
-      title: 'Welcome to Poupa-up'
+      title: 'Welcome to Poupa-up',
+      username: '',
+      password: '',
+    }
+  },
+  methods: {
+    async signIn() {
+      const poupaUpService = new PoupaUpService();
+      await poupaUpService.signIn(this.username, this.password);
     }
   }
 }
