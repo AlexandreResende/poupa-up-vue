@@ -1,7 +1,7 @@
 <template>
   <div id='container'>
     <div id='left-container'>
-      <h1 id='header'>Welcome to Poupa-up</h1>
+      <h1 id='header'>{{ title }}</h1>
       <label>Username</label>
       <input type='text' name='username' id='username' placeholder='Type your username here'><br><br>
       <label>Password</label>
@@ -19,7 +19,11 @@
 <script>
 export default {
   name: 'Login',
-  components: {}
+  data() {
+    return {
+      title: 'Welcome to Poupa-up'
+    }
+  }
 }
 </script>
 

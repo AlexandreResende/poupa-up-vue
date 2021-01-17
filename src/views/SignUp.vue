@@ -1,7 +1,7 @@
 <template>
   <div id='container'>
     <div id='left-container'>
-      <h1 id='header'>Create your account</h1>
+      <h1 id='header'>{{ title }}</h1>
       <label>Username</label>
       <input type='text' name='username' id='username' placeholder='Type your username here'><br><br>
       <label>Password</label>
@@ -21,6 +21,7 @@ export default {
   name: 'SignUp',
   data() {
     return {
+      title: 'Create your account',
       username: '',
       password: '',
       passwordConfirmation: ''
