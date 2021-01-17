@@ -6,7 +6,7 @@
       <input type='text' name='username' id='username' placeholder='Type your username here'><br><br>
       <label>Password</label>
       <input type='password' name='password' id='password'><br>
-      <label>Confirm password</label>
+      <label id='confirm_password_label'>Confirm password</label>
       <input type='password' name='password_confirmation' id='password'><br>
       <input type='button' id='buttons' value='Submit' name='submit'>
     </div>
@@ -80,6 +80,10 @@ input {
 
 #password {
   margin: 1rem 1rem 1rem 1rem;
+}
+
+#confirm_password_label {
+  margin-left: -4rem;
 }
 
 a {
