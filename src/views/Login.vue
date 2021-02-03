@@ -26,12 +26,15 @@ export default {
       title: 'Welcome to Poupa-up',
       username: '',
       password: '',
+      signInResponse: {},
     }
   },
   methods: {
     async signIn() {
       const poupaUpService = new PoupaUpService();
-      await poupaUpService.signIn(this.username, this.password);
+      const response = await poupaUpService.signIn(this.username, this.password);
+
+      this.signInResponse = response;
     }
   }
 }
