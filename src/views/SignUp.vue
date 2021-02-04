@@ -38,13 +38,14 @@
         v-model='passwordConfirmation'
       >
       <br>
-      <input
+      <button
         type='button'
         id='buttons'
         value='Submit'
         name='submit'
+        v-bind:disabled='!doesPasswordMatch || !isEmailValid'
         v-on:click='signUp'
-      >
+      >Submit</button>
     </div>
     <div id='right-container'>
 
@@ -62,27 +63,49 @@ export default {
       email: '',
       password: '',
       passwordConfirmation: '',
-      canSubmit: false,
+      doesPasswordMatch: false,
+      isEmailValid: false,
     }
   },
   methods: {
     validateEmail() {
+      console.log('Email', this.isEmailValid);
       if (this.email.length !== 0) {
         const emailParts = this.email.split('@');
 
         if (emailParts.length < 2) {
+          this.isEmailValid = false;
           alert('Invalid email');
+
+          return;
         }
 
         if (!emailParts[1].includes('.')) {
+          this.isEmailValid = false;
           alert('Invalid email');
+
+          return;
         }
       }
+
+      this.isEmailValid = true;
     },
     passwordMatches() {
-      if (this.password !== this.passwordConfirmation) {
-        alert('Password confirmation does not match password');
+      console.log('password', this.doesPasswordMatch);
+      if (this.password.length === 0) {
+        this.doesPasswordMatch = false;
+        alert('Password can not be empty');
+
+        return;
       }
+      if (this.password !== this.passwordConfirmation) {
+        this.doesPasswordMatch = false;
+        alert('Password confirmation does not match password');
+
+        return;
+      }
+
+      this.doesPasswordMatch = true;
     },
     async signup() {
 
