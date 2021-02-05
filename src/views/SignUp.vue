@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import ValidationService from '../services/validator-service';
+
 export default {
   name: 'SignUp',
   data() {
@@ -70,25 +72,9 @@ export default {
   methods: {
     validateEmail() {
       console.log('Email', this.isEmailValid);
-      if (this.email.length !== 0) {
-        const emailParts = this.email.split('@');
+      const result = ValidationService.isEmailValid(this.email);
 
-        if (emailParts.length < 2) {
-          this.isEmailValid = false;
-          alert('Invalid email');
-
-          return;
-        }
-
-        if (!emailParts[1].includes('.')) {
-          this.isEmailValid = false;
-          alert('Invalid email');
-
-          return;
-        }
-      }
-
-      this.isEmailValid = true;
+      this.isEmailValid = result;
     },
     passwordMatches() {
       console.log('password', this.doesPasswordMatch);
