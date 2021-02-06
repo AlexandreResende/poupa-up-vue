@@ -14,4 +14,15 @@ module.exports = class ValidatorService {
 
     return true;
   }
+
+  static passwordMatches(password, passwordConfirmation) {
+    if (password.length === 0) {
+      return { isValid: false, errorMessage: 'Password can not be empty' };
+    }
+    if (password !== passwordConfirmation) {
+      return { isValid: false, errorMessage: 'Password confirmation does not match password' };
+    }
+
+    return { isValid: true };
+  }
 }
