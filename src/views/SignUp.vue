@@ -71,31 +71,20 @@ export default {
   },
   methods: {
     validateEmail() {
-      console.log('Email', this.isEmailValid);
       const result = ValidationService.isEmailValid(this.email);
 
       this.isEmailValid = result;
     },
     passwordMatches() {
-      console.log('password', this.doesPasswordMatch);
-      if (this.password.length === 0) {
-        this.doesPasswordMatch = false;
-        alert('Password can not be empty');
+      const result = ValidationService.passwordMatches(this.password, this.passwordConfirmation);
 
-        return;
-      }
-      if (this.password !== this.passwordConfirmation) {
-        this.doesPasswordMatch = false;
-        alert('Password confirmation does not match password');
-
-        return;
+      if (!result.isValid) {
+        alert(result.errorMessage);
       }
 
-      this.doesPasswordMatch = true;
+      this.doesPasswordMatch = result.isValid;
     },
-    async signup() {
-
-    }
+    async signup() {}
   }
 }
 </script>
