@@ -38,6 +38,15 @@
         v-model='passwordConfirmation'
       >
       <br>
+      <router-link to="/">
+        <button
+          type='button'
+          id='buttons'
+          value='Back'
+          name='back'
+        >Back
+        </button>
+      </router-link>
       <button
         type='button'
         id='buttons'
