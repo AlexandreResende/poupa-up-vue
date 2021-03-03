@@ -39,22 +39,15 @@
       >
       <br>
       <router-link to="/">
-        <button
-          type='button'
-          id='buttons'
-          value='Back'
-          name='back'
-        >Back
-        </button>
+        <Button
+          :buttonName='backButtonName'>
+        </Button>
       </router-link>
-      <button
-        type='button'
-        id='buttons'
-        value='Submit'
-        name='submit'
+      <Button
+        :buttonName='submitButtonName'
         v-bind:disabled='!doesPasswordMatch || !isEmailValid'
         v-on:click='signUp'
-      >Submit</button>
+      ></Button>
     </div>
     <div id='right-container'>
 
@@ -63,9 +56,12 @@
 </template>
 
 <script>
+import Button from '../components/Button';
+
 import ValidationService from '../services/validator-service';
 
 export default {
+  components: { Button },
   name: 'SignUp',
   data() {
     return {
@@ -76,6 +72,8 @@ export default {
       passwordConfirmation: '',
       doesPasswordMatch: false,
       isEmailValid: false,
+      backButtonName: 'Back',
+      submitButtonName: 'Submit',
     }
   },
   methods: {
