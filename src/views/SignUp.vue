@@ -91,7 +91,9 @@ export default {
 
       this.doesPasswordMatch = result.isValid;
     },
-    async signup() {}
+    async signUp() {
+      console.log('This is an attempt to sign up an user!!!');
+    }
   }
 }
 </script>
