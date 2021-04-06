@@ -6,8 +6,25 @@
       <input type='text' name='username' id='username' placeholder='Type your username here' v-model='username'><br><br>
       <label>Password</label>
       <input type='password' name='password' id='password' v-model='password'><br>
-      <router-link to='/home'><input type='button' id='buttons' value='Sign in' name='submit' v-on:click='this.signIn'></router-link>
-      <router-link to='/signup'><input type='button' id='buttons' value='Sign up' name='sign up'></router-link><br><br>
+      <router-link to='/home'>
+        <button
+          type='button'
+          id='buttons'
+          value='Sign in'
+          name='sign in'
+          v-on:click='this.signIn'
+        >Sign in
+        </button>
+      </router-link>
+      <router-link to='/signup'>
+        <button
+          type='button'
+          id='buttons'
+          value='Sign up'
+          name='sign up'
+        >Sign Up
+        </button>
+      </router-link><br><br>
       <a href='#'>Forgot my password!</a>
     </div>
     <div id='right-container'>
