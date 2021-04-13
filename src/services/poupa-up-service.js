@@ -2,21 +2,40 @@ import axios from 'axios';
 
 export default class PoupaUpService {
   constructor() {
-    this.baseUrl = '';
+    this.baseUrl = 'http://localhost:7777';
   }
 
-  async signIn(username, password) {
-    console.log('INSIDE SERVICE!');
-    const signInEndpoint = '';
-    const response = await axios.post(`${this.baseUrl}${signInEndpoint}`, { username, password });
+  async signIn(body) {
+    try {
+      const endpoint = '/login';
+      const response = await axios.post(`${this.baseUrl}${endpoint}`, body);
 
-    return response.data;
+      return {
+        success: true,
+        result: response.data,
+      };
+    } catch (err) {
+      return {
+        sucess: false,
+        result: err.response.data
+      };
+    }
   }
 
-  async signUp() {
-    const signUpEndpoint = '';
-    const response = await axios.post(`${this.baseUrl}${signUpEndpoint}`);
+  async signUp(body) {
+    try {
+      const endpoint = '/user';
+      const response = await axios.post(`${this.baseUrl}${endpoint}`, body, { headers: {} });
 
-    return response.data;
+      return {
+        success: true,
+        result: response.data
+      };
+    } catch (err) {
+      return {
+        success: false,
+        result: err.response.data
+      };
+    }
   }
 }
