@@ -1,6 +1,8 @@
 <template>
   <div id='container'>
     <div id='left-container'>
+      <h3 v-if="registrationSuccess === true">User registered successfully</h3>
+      <h3 v-if="registrationSuccess === false">An error occurred: {{ registrationError }}</h3>
       <h1 id='header'>{{ title }}</h1>
       <label>Username</label>
       <input
@@ -59,6 +61,7 @@
 import Button from '../components/Button';
 
 import ValidationService from '../services/validator-service';
+import PoupaUpService from '../services/poupa-up-service';
 
 export default {
   components: { Button },
@@ -74,6 +77,8 @@ export default {
       isEmailValid: false,
       backButtonName: 'Back',
       submitButtonName: 'Submit',
+      registrationSuccess: null,
+      registrationError: null,
     }
   },
   methods: {
@@ -93,6 +98,23 @@ export default {
     },
     async signUp() {
       console.log('This is an attempt to sign up an user!!!');
+      const body = {
+        email: 'teste@teste.com',
+        username: 'alex',
+        password: '123123',
+        fullName: 'Alexandre Resende'
+      };
+
+      const response = await new PoupaUpService().signUp(body);
+
+      if (response.success) {
+        this.registrationSuccess = true;
+      } else {
+        this.registrationSuccess = false;
+        this.registrationError = response.result.error;
+      }
+
+      console.log(response);
     }
   }
 }
