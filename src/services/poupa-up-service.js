@@ -1,13 +1,18 @@
 import axios from 'axios';
+import {
+  POUPA_UP_BASE_URL,
+  POUPA_UP_SIGN_UP_ENDPOINT,
+  POUPA_UP_LOGIN_ENDPOINT
+} from '../environment';
 
 export default class PoupaUpService {
   constructor() {
-    this.baseUrl = 'http://localhost:7777';
+    this.baseUrl = POUPA_UP_BASE_URL;
   }
 
   async signIn(body) {
     try {
-      const endpoint = '/login';
+      const endpoint = POUPA_UP_LOGIN_ENDPOINT;
       const response = await axios.post(`${this.baseUrl}${endpoint}`, body);
 
       return {
@@ -24,7 +29,7 @@ export default class PoupaUpService {
 
   async signUp(body) {
     try {
-      const endpoint = '/user';
+      const endpoint = POUPA_UP_SIGN_UP_ENDPOINT;
       const response = await axios.post(`${this.baseUrl}${endpoint}`, body, { headers: {} });
 
       return {
