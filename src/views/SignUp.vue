@@ -61,7 +61,7 @@
 import Button from '../components/Button';
 
 import ValidationService from '../services/validator-service';
-import PoupaUpService from '../services/poupa-up-service';
+import UserService from '../services/user-service';
 
 export default {
   components: { Button },
@@ -105,7 +105,7 @@ export default {
         fullName: 'Alexandre Resende'
       };
 
-      const response = await new PoupaUpService().signUp(body);
+      const response = await new UserService().signUp(body);
 
       if (response.success) {
         this.registrationSuccess = true;

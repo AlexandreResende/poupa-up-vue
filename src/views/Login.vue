@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import PoupaUpService from '../services/poupa-up-service';
+import UserService from '../services/user-service';
 
 export default {
   name: 'Login',
@@ -48,8 +48,8 @@ export default {
   },
   methods: {
     async signIn() {
-      const poupaUpService = new PoupaUpService();
-      const response = await poupaUpService.signIn(this.username, this.password);
+      const userService = new UserService();
+      const response = await userService.signIn(this.username, this.password);
 
       this.signInResponse = response;
     }

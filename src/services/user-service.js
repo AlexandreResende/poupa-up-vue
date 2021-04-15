@@ -5,7 +5,7 @@ import {
   POUPA_UP_LOGIN_ENDPOINT
 } from '../environment';
 
-export default class PoupaUpService {
+export default class UserService {
   constructor() {
     this.baseUrl = POUPA_UP_BASE_URL;
   }
